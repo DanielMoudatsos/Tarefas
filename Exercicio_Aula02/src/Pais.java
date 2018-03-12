@@ -160,4 +160,104 @@ public boolean equals(Object obj) {
       return false;
    return true;
 }
+public String  MaiorPopu() {
+	String sqlSelect = "select max(pupolacao) from paises";
+	try (Connection conn = obtemConexao();
+		      PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+		         stm.setInt(1, getId());
+		         try (ResultSet rs = stm.executeQuery();) {
+		            if (rs.next()) {
+		               setNome(rs.getString("nome"));
+		               setPopulacao(rs.getLong("populacao"));
+		               
+		            } else {
+		               setId(-1);
+		               setNome(null);
+		               setPopulacao(-1);
+		               
+		            }
+		         } catch (SQLException e) {
+		            e.printStackTrace();
+		         }
+		      } catch (SQLException e1) {
+		         System.out.print(e1.getStackTrace());
+		      }
+	return sqlSelect;
+		   }
+
+
+public String MenorArea() {
+	String sqlSelect = "select min() from paises";
+	try (Connection conn = obtemConexao();
+		      PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+		         stm.setInt(1, getId());
+		         try (ResultSet rs = stm.executeQuery();) {
+		            if (rs.next()) {
+		               setNome(rs.getString("nome"));
+		               setArea(rs.getDouble("area"));
+		               
+		            } else {
+		               setId(-1);
+		               setNome(null);
+		               setArea(-1);
+		               
+		            }
+		         } catch (SQLException e) {
+		            e.printStackTrace();
+		         }
+		      } catch (SQLException e1) {
+		         System.out.print(e1.getStackTrace());
+		      }
+	return sqlSelect;
+		   }
+
+
+public String MenorPopu() {
+	String sqlSelect = "select min() from paises ";
+	try (Connection conn = obtemConexao();
+		      PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+		         stm.setInt(1, getId());
+		         try (ResultSet rs = stm.executeQuery();) {
+		            if (rs.next()) {
+		               setNome(rs.getString("nome"));
+		               setArea(rs.getDouble("area"));
+		               
+		            } else {
+		               setId(-1);
+		               setNome(null);
+		               setArea(-1);
+		               
+		            }
+		         } catch (SQLException e) {
+		            e.printStackTrace();
+		         }
+		      } catch (SQLException e1) {
+		         System.out.print(e1.getStackTrace());
+		      }
+	return sqlSelect;
+		   }
+public String VetorTresPaises() {
+	String sqlSelect = "select * from paises limit 3";
+	try (Connection conn = obtemConexao();
+		      PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+		         stm.setInt(1, getId());
+		         try (ResultSet rs = stm.executeQuery();) {
+		        	 if (rs.next()) {
+		                 setNome(rs.getString("nome"));
+		                 setPopulacao(rs.getLong("populacao"));
+		                 setArea(rs.getDouble("area"));
+		              } else {
+		                 setId(-1);
+		                 setNome(null);
+		                 setPopulacao(-1);
+		                 setArea(-1);
+		              }
+		         } catch (SQLException e) {
+		            e.printStackTrace();
+		         }
+		      } catch (SQLException e1) {
+		         System.out.print(e1.getStackTrace());
+		      }
+	return sqlSelect;
+		   }
 }
