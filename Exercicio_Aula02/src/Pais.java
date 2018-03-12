@@ -187,7 +187,7 @@ public String  MaiorPopu() {
 
 
 public String MenorArea() {
-	String sqlSelect = "select min() from paises";
+	String sqlSelect = "select min(area) from paises";
 	try (Connection conn = obtemConexao();
 		      PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
 		         stm.setInt(1, getId());
@@ -213,7 +213,7 @@ public String MenorArea() {
 
 
 public String MenorPopu() {
-	String sqlSelect = "select min() from paises ";
+	String sqlSelect = "select min(populacao) from paises ";
 	try (Connection conn = obtemConexao();
 		      PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
 		         stm.setInt(1, getId());
